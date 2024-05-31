@@ -17,7 +17,11 @@ jobs:
     deploy:
         runs-on: ubuntu-latest
         steps:
-            - name: Set vars
+          - name: Checkout code
+            uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v3.5.2
+            with:
+                ref: ${{ github.event.inputs.ref }}
+          - name: Set vars
             id: vars
             run: echo "sha_short=$(git rev-parse --short=8 ${{ github.event.inputs.ref }})" >> $GITHUB_OUTPUT
 
