@@ -25,7 +25,7 @@ jobs:
             id: vars
             env:
               MESSAGE: ${{ github.event.inputs.ref }}
-            run: echo "sha_short=$(git rev-parse --short=8 ${{ github.event.inputs.ref }})" >> $GITHUB_OUTPUT
+            run: echo "sha_short=$(git rev-parse --short=8 $MESSAGE)" >> $GITHUB_OUTPUT
 
 
 
