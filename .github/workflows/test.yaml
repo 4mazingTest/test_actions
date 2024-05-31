@@ -1,0 +1,25 @@
+name: On-demand test
+
+on:
+    workflow_dispatch:
+        inputs:
+            ref:
+                required: true
+                description: sha or branch name to deploy
+                type: string
+                default: 'main'
+
+permissions:
+    id-token: write
+    contents: read
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Set vars
+            id: vars
+            run: echo "sha_short=$(git rev-parse --short=8 ${{ github.event.inputs.ref }})" >> $GITHUB_OUTPUT
+
+
+
